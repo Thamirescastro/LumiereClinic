@@ -85,7 +85,7 @@ export default function Dashboard() {
     setUsersDatabase([...usersDatabase, novoUsuario]);
     
     if (registerForm.role === 'paciente') {
-      setPatients([...patients, { id: Date.now(), nome: registerForm.nome, email: registerForm.email, telefone: registerForm.telephone || registerForm.telefone, cpf: registerForm.cpf }]);
+      setPatients([...patients, { id: Date.now(), nome: registerForm.nome, email: registerForm.email, telefone: registerForm.telefone || registerForm.telefone, cpf: registerForm.cpf }]);
     }
 
     setCurrentUser(novoUsuario);
@@ -202,14 +202,14 @@ export default function Dashboard() {
           <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden shadow-lg border border-[#D4AF37]/20 flex items-center px-6 md:px-12">
             <div className="absolute inset-0 z-0">
               <img 
-                src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80" 
+                src="https://s.zst.com.br/cms-assets/2022/05/autocuidado-feminino.webp" 
                 alt="Lumiere Clinic Interior" 
                 className="w-full h-full object-cover brightness-[0.45] contrast-[1.05]"
               />
             </div>
             <div className="relative z-10 max-w-xl text-white space-y-3">
               <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-widest bg-[#111111]/60 px-3 py-1 rounded-full border border-[#D4AF37]/30">Alta Tecnologia & Estética Avançada</span>
-              <h2 className="text-3xl md:text-5xl font-light tracking-wide leading-tight">Onde a ciência encontra a sua melhor versão.</h2>
+              <h2 className="text-3xl md:text-5xl font-light tracking-wide leading-tight">Beleza, saúde e confiança em um só lugar.</h2>
               <p className="text-gray-300 text-xs md:text-sm font-light tracking-wider max-w-md">Agende consultas exclusivas, explore tratamentos faciais de elite e acompanhe sua jornada estética com total comodidade.</p>
             </div>
           </div>
