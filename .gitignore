@@ -7,3 +7,5 @@ obj/
 *.db
 appsettings.Development.json
 .env
+node_modules/
+dist/
