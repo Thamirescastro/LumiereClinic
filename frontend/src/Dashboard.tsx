@@ -178,7 +178,7 @@ export default function Dashboard() {
                   <label className="block text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1">Telefone</label>
                   <input 
                     type="text" required placeholder="(11) 99999-9999" value={registerForm.telefone}
-                    onChange={(e) => setRegisterForm({...registerForm, telephone: e.target.value})}
+                    onChange={(e) => setRegisterForm({...registerForm, telefone: e.target.value})}
                     className="w-full border border-gray-200 focus:border-[#D4AF37] outline-none rounded-xl p-3 text-sm bg-[#FDFBF7]"
                   />
                 </div>
