@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  UserCheck, DollarSign, Calendar, Sparkles, Clock, LogOut, 
+  Calendar, Sparkles, Clock, LogOut, 
   Edit3, Plus, Trash2, User, Users, ShieldAlert, Scissors, Briefcase, FolderHeart
 } from 'lucide-react';
 
@@ -17,7 +17,6 @@ export default function Dashboard() {
     { id: 2, nome: 'Jean-Louis Dupont', email: 'jean@gmail.com', telefone: '(11) 97777-6666', cpf: '987.654.321-11' }
   ]);
 
-  // Carregado com +3 médicos (Total: 5)
   const [doctors, setDoctors] = useState([
     { id: 1, nome: 'Dra. Morgana LeFey', categoria: 'Dermatologia Estética' },
     { id: 2, nome: 'Dr. Pierre Bouvier', categoria: 'Cirurgia Plástica & Botox' },
@@ -26,7 +25,6 @@ export default function Dashboard() {
     { id: 5, nome: 'Dr. Charles de Gaulle', categoria: 'Tricologia & Implante Capilar' }
   ]);
 
-  // Carregado com +5 serviços de alto padrão (Total: 7)
   const [services, setServices] = useState([
     { id: 1, nome: 'Peeling de Diamante Premium', categoria: 'Estética Facial', preco: 'R$ 450,00' },
     { id: 2, nome: 'Aplicação de Toxina Botulínica', categoria: 'Injetáveis', preco: 'R$ 1.800,00' },
@@ -59,7 +57,7 @@ export default function Dashboard() {
   const [editingId, setEditingId] = useState<number | null>(null);
   const [isAdding, setIsAdding] = useState(false);
 
-  // Formulários Dinâmicos de Entrada (Modais e Paineis)
+  // Formulários Dinâmicos de Entrada
   const [formPatient, setFormPatient] = useState({ nome: '', email: '', telefone: '', cpf: '' });
   const [formDoctor, setFormDoctor] = useState({ nome: '', categoria: '' });
   const [formService, setFormService] = useState({ nome: '', categoria: '', preco: '' });
@@ -97,7 +95,6 @@ export default function Dashboard() {
 
     setUsersDatabase([...usersDatabase, novoUsuario]);
     
-    // Insere na lista geral de pacientes se o cadastro for do perfil paciente
     if (registerForm.role === 'paciente') {
       setPatients([...patients, { 
         id: Date.now(), 
@@ -121,9 +118,6 @@ export default function Dashboard() {
     setRegisterForm({ nome: '', email: '', telefone: '', cpf: '', role: 'paciente' });
   };
 
-  // ==========================================
-  // 1️⃣ TELA DE LOGIN & CADASTRO (ATUALIZADA COM TELEFONE E CPF)
-  // ==========================================
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-[#FDFBF7] flex flex-col justify-center items-center p-6 font-sans">
@@ -146,7 +140,6 @@ export default function Dashboard() {
             </button>
           </div>
 
-          {/* FORMULÁRIO: ENTRAR */}
           {loginTab === 'login' && (
             <form onSubmit={handleLoginSubmit} className="space-y-4 text-left">
               <div>
@@ -162,7 +155,6 @@ export default function Dashboard() {
             </form>
           )}
 
-          {/* FORMULÁRIO: CADASTRAR-SE (CAMPOS CPF E TELEFONE ADICIONADOS) */}
           {loginTab === 'cadastro' && (
             <form onSubmit={handleRegisterSubmit} className="space-y-4 text-left">
               <div>
@@ -186,7 +178,7 @@ export default function Dashboard() {
                   <label className="block text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1">Telefone</label>
                   <input 
                     type="text" required placeholder="(11) 99999-9999" value={registerForm.telefone}
-                    onChange={(e) => setRegisterForm({...registerForm, telefone: e.target.value})}
+                    onChange={(e) => setRegisterForm({...registerForm, telephone: e.target.value})}
                     className="w-full border border-gray-200 focus:border-[#D4AF37] outline-none rounded-xl p-3 text-sm bg-[#FDFBF7]"
                   />
                 </div>
@@ -219,13 +211,9 @@ export default function Dashboard() {
     );
   }
 
-  // ==========================================
-  // 2️⃣ CORE DO DASHBOARD PRINCIPAL
-  // ==========================================
   return (
     <div className="min-h-screen bg-[#FDFBF7] p-6 md:p-10 text-[#111111] font-sans">
       
-      {/* Top Header */}
       <header className="border-b border-[#D4AF37]/30 pb-6 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="text-4xl font-light tracking-widest uppercase">Lumière Clinic</h1>
@@ -240,7 +228,6 @@ export default function Dashboard() {
         </div>
       </header>
 
-      {/* MENUS DINÂMICOS */}
       <div className="flex flex-wrap gap-2 border-b border-gray-200 mb-8">
         {currentUser?.role === 'recepcionista' && (
           <>
@@ -259,11 +246,6 @@ export default function Dashboard() {
         )}
       </div>
 
-      {/* ==========================================
-          CONTEÚDO DAS ABAS (ADMINISTRATIVO)
-         ========================================== */}
-
-      {/* 📁 RECEPCIONISTA -> ABA: PACIENTES */}
       {currentUser?.role === 'recepcionista' && activeMenu === 'pacientes' && (
         <div className="space-y-6">
           <div className="flex justify-between items-center bg-white p-4 border border-[#D4AF37]/20 rounded-xl">
@@ -313,7 +295,6 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* 📁 RECEPCIONISTA -> ABA: PROFISSIONAIS / MÉDICOS */}
       {currentUser?.role === 'recepcionista' && activeMenu === 'profissionais' && (
         <div className="space-y-6">
           <div className="flex justify-between items-center bg-white p-4 border border-[#D4AF37]/20 rounded-xl">
@@ -355,7 +336,6 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* 📁 RECEPCIONISTA -> ABA: SERVIÇOS */}
       {currentUser?.role === 'recepcionista' && activeMenu === 'servicos' && (
         <div className="space-y-6">
           <div className="flex justify-between items-center bg-white p-4 border border-[#D4AF37]/20 rounded-xl">
@@ -401,7 +381,6 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* 📁 RECEPCIONISTA -> ABA: CONSULTAS */}
       {currentUser?.role === 'recepcionista' && activeMenu === 'consultas' && (
         <div className="space-y-6">
           <div className="flex justify-between items-center bg-white p-4 border border-[#D4AF37]/20 rounded-xl shadow-sm">
@@ -447,7 +426,6 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* RECEPCIONISTA -> PERFIL */}
       {currentUser?.role === 'recepcionista' && activeMenu === 'perfil' && (
         <div className="bg-white border border-[#D4AF37]/20 p-8 rounded-xl max-w-md shadow-sm">
           <h3 className="text-sm font-bold uppercase tracking-widest mb-4 text-[#D4AF37]">Conta Administradora</h3>
@@ -458,9 +436,6 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* ==========================================
-          👤 PAINEL EXCLUSIVO DO PACIENTE
-         ========================================== */}
       {currentUser?.role === 'paciente' && activeMenu === 'consultas-agendadas' && (
         <div className="space-y-6">
           <div className="bg-white border border-[#D4AF37]/20 p-5 rounded-xl">
