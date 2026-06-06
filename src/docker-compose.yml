@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  lumiere-db:
+    image: postgres:latest
+    container_name: lumiere_postgres_container
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: LumierePassword2026
+      POSTGRES_DB: lumiere_clinic_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  lumiere-db:
+    image: postgres:15-alpine
+    container_name: lumiere_postgres_container
+    environment:
+      POSTGRES_USER: thamires_admin
+      POSTGRES_PASSWORD: LumierePassword123
+      POSTGRES_DB: lumiere_clinic_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_lumiere_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_lumiere_data:
