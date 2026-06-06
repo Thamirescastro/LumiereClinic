@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/LumiereClinic.API/LumiereClinic.API.csproj" />
+    <Project Path="src/LumiereClinic.Application/LumiereClinic.Application.csproj" />
+    <Project Path="src/LumiereClinic.Domain/LumiereClinic.Domain.csproj" />
+    <Project Path="src/LumiereClinic.Infrastructure/LumiereClinic.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/LumiereClinic.Tests/LumiereClinic.Tests.csproj" />
+  </Folder>
+</Solution>
